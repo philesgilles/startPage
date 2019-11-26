@@ -1,0 +1,32 @@
+.navbar {
+  width: 100%;
+  margin: 10px 0;
+  border: #a9b4c2 1px solid;
+  background-color: #f4f7f8;
+}
+
+.navbar ul {
+  padding: 0;
+  margin: 3px 0;
+}
+
+.navbar ul li {
+  display: inline-block;
+  border-right: #a9b4c2 1px solid;
+  padding: 0px 5px;
+}
+
+.navbar ul li a {
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #1c2321;
+}
+
+.navbar ul li a.active {
+  font-weight: bold;
+}
+
+.navbar ul li:last-child {
+  border-right: none;
+}

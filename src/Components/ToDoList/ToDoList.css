@@ -1,0 +1,250 @@
+.has-error {
+  border: tomato 1px solid !important;
+}
+
+.table-wrapper {
+  margin: 10px 0 20px;
+}
+
+.fl-table {
+  font-size: 14px;
+  width: 100%;
+  font-weight: normal;
+  border: none;
+  border-collapse: collapse;
+  background-color: #f4f7f8;
+  border: #a9b4c2 1px solid;
+}
+
+.fl-table td,
+.fl-table th {
+  text-align: left;
+  padding: 8px;
+  word-wrap: break-word;
+}
+
+.fl-table td {
+  font-size: 14px;
+}
+
+.fl-table thead th {
+  color: #ffffff;
+  background: #5e6572;
+}
+
+.fl-table tr:nth-child(even) {
+  background: #e8eeef;
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+  .fl-table {
+    display: block;
+    width: 100%;
+  }
+  .table-wrapper:before {
+    content: "Scroll horizontally >";
+    display: block;
+    text-align: right;
+    font-size: 11px;
+    color: #1c2321;
+    padding: 0 0 10px;
+  }
+  .fl-table thead,
+  .fl-table tbody,
+  .fl-table thead th {
+    display: block;
+  }
+  .fl-table thead th:last-child {
+    border-bottom: none;
+  }
+  .fl-table thead {
+    float: left;
+  }
+  .fl-table tbody {
+    position: relative;
+    overflow-x: auto;
+  }
+  .fl-table td,
+  .fl-table th {
+    padding: 20px 0.625em 0.625em 0.625em;
+    height: 65px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 180px;
+    font-size: 13px;
+    text-overflow: ellipsis;
+  }
+  .fl-table thead th {
+    text-align: left;
+    border-bottom: 1px solid #f7f7f9;
+    width: 120px;
+  }
+  .fl-table tbody tr {
+    display: table-cell;
+  }
+  .fl-table tbody tr:nth-child(odd) {
+    background: none;
+  }
+  .fl-table tr:nth-child(even) {
+    background: transparent;
+  }
+  .fl-table tr td:nth-child(odd) {
+    background: #f8f8f8;
+    border-right: 1px solid #e6e4e4;
+  }
+  .fl-table tr td:nth-child(even) {
+    border-right: 1px solid #e6e4e4;
+  }
+  .fl-table tbody td {
+    display: block;
+    text-align: center;
+  }
+}
+
+.addTaskForm {
+  padding: 10px 20px;
+  margin: 10px 0 70px;
+  background: #f4f7f8;
+  border-radius: 1px;
+  border: #a9b4c2 1px solid;
+}
+.addTaskForm fieldset {
+  border: none;
+}
+.addTaskForm legend {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+.addTaskForm label {
+  display: block;
+  margin-bottom: 8px;
+}
+.addTaskForm input[type="text"],
+.addTaskForm input[type="date"],
+.addTaskForm input[type="datetime"],
+.addTaskForm input[type="email"],
+.addTaskForm input[type="number"],
+.addTaskForm input[type="search"],
+.addTaskForm input[type="time"],
+.addTaskForm input[type="url"],
+.addTaskForm textarea,
+.addTaskForm select {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  margin: 0;
+  outline: 0;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 30px;
+}
+.addTaskForm input[type="text"]:focus,
+.addTaskForm input[type="date"]:focus,
+.addTaskForm input[type="datetime"]:focus,
+.addTaskForm input[type="email"]:focus,
+.addTaskForm input[type="number"]:focus,
+.addTaskForm input[type="search"]:focus,
+.addTaskForm input[type="time"]:focus,
+.addTaskForm input[type="url"]:focus,
+.addTaskForm textarea:focus,
+.addTaskForm select:focus {
+  background: #d2d9dd;
+}
+.addTaskForm select {
+  -webkit-appearance: menulist-button;
+  height: 35px;
+}
+.addTaskForm .number {
+  background: #1abc9c;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 4px;
+  line-height: 30px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 15px 15px 15px 0px;
+}
+
+.addTaskForm input[type="submit"],
+.addTaskForm button {
+  position: relative;
+  display: block;
+  padding: 10px 20px 9px 20px;
+  color: #fff;
+  margin: 0 auto;
+  background: #5e6572;
+  font-size: 15px;
+  text-align: center;
+  font-style: bold;
+  width: 100%;
+  border: 1px solid #4f5561;
+  border-width: 1px 1px 3px;
+  margin-bottom: 10px;
+}
+.addTaskForm input[type="submit"]:hover,
+.addTaskForm input[type="button"]:hover {
+  background: #109177;
+}
+
+/* CHECKBOX CSS */
+
+.form-group {
+  display: block;
+}
+
+.form-group input {
+  padding: 0;
+  height: initial;
+  width: initial;
+  margin-bottom: 0;
+  display: none;
+  cursor: pointer;
+}
+
+.form-group label {
+  position: relative;
+  cursor: pointer;
+}
+
+.form-group label:before {
+  content: "";
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 2px solid #5e6572;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+.form-group input:checked + label:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 14px;
+  width: 6px;
+  height: 14px;
+  border: solid #5e6572;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
