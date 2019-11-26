@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Loading from "../Components/Loading/Loading";
 import PokeCard from "../Components/Pokemon/PokemonCard";
 import PokeInfo from "../Components/Pokemon/PokemonInfo";
-
+import Backdrop from "../Components/Main/Backdrop";
 //import PokeList from "../Components/Pokemon/PokemonList";
 import "./Pokemon.css";
 
@@ -12,6 +12,8 @@ const Pokemon = () => {
   const [nextPage, setNextPage] = useState("");
   const [previousPage, setPreviousPage] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState({});
+  const [showModal, setShowModal] = useState(false);
+
   const fetchPokemon = url => {
     fetch(url)
       .then(response => {
@@ -36,21 +38,26 @@ const Pokemon = () => {
   };
 
   const selectPokemon = pokemonUrl => {
-    console.log(pokemonUrl);
-    // fetch(url)
-    //   .then(response => {
-    //     if (!response.ok) {
-    //       throw new Error("Failed to fetch.");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then(pokemonData => {
-    //     //
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //     setIsLoading(false);
-    //   });
+    fetch(pokemonUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch.");
+        }
+        return response.json();
+      })
+      .then(pokemonData => {
+        setSelectedPokemon(pokemonData);
+        toggleModal();
+        console.log(pokemonData);
+      })
+      .catch(err => {
+        console.log(err);
+        setIsLoading(false);
+      });
+  };
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
   };
 
   useEffect(() => {
@@ -64,7 +71,7 @@ const Pokemon = () => {
     showPokemons = pokeList.map(pokemon => {
       return (
         <PokeCard
-          handleClick={console.log(pokemon.name)}
+          handleClick={() => selectPokemon(pokemon.url)}
           key={pokemon.name}
           name={pokemon.name}
           url={pokemon.url}
@@ -103,7 +110,17 @@ const Pokemon = () => {
       {pokeControl}
       <div className="allPokeCards">{showPokemons}</div>
       {pokeControl}
-      <PokeInfo pokemon={selectedPokemon} />
+      {showModal ? (
+        <React.Fragment>
+          <Backdrop handleClick={() => toggleModal()} />
+          <PokeInfo
+            handleClick={() => toggleModal()}
+            pokemon={selectedPokemon}
+          />
+        </React.Fragment>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -25,14 +25,13 @@ const Card = styled.div`
 
 const PokeCard = props => {
   const { name, url } = props;
-
   const [imageLoading, setImageLoading] = useState(true);
   const [toManyRequests, setToManyRequests] = useState(false);
   const pokemonIndex = url.split("/")[url.split("/").length - 2];
   const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokemonIndex}.png?raw=true`;
 
   return (
-    <Card className="pokeCard">
+    <Card className="pokeCard" onClick={props.handleClick}>
       <div className="pokeHeader">
         <h4>
           {pokemonIndex}. {name}
