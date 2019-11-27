@@ -48,6 +48,7 @@ const PokeInfo = props => {
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to fetch description");
+          return {};
         }
         return response.json();
       })

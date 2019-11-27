@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
-
+import _ from "lodash";
 import "./SearchPoke.css";
 
 const SearchBar = props => {
@@ -16,24 +16,29 @@ const SearchBar = props => {
         return response.json();
       })
       .then(pokemonsData => {
-        //console.log(pokemonsData);
-        setAllPoke(pokemonsData.results);
+        let pokemons = allPoke;
+        pokemonsData.results.map(pokemon => {
+          pokemons.push({ value: pokemon.url, label: pokemon.name });
+        });
+        pokemons = _.orderBy(pokemons, ["label"], ["asc"]);
+        setAllPoke(pokemons);
       })
       .catch(err => {
         console.log(err);
         setIsLoading(false);
       });
   };
-  console.log(allPoke);
 
   useEffect(() => {
-    console.log("fetching pokemons");
     fetchAllPokemons("https://pokeapi.co/api/v2/pokemon/?limit=964");
   }, []);
-  const options = [];
   return (
     <div className="searchPoke">
-      <Select />
+      <Select
+        options={allPoke}
+        placeholder={allPoke.length > 0 ? "Search" : "Loading Pokemons"}
+        onChange={e => props.handleSelect(e)}
+      />
     </div>
   );
 };

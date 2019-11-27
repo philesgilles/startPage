@@ -107,7 +107,11 @@ const Pokemon = () => {
       <div className="pokeHeader">
         <h3>Pokedex</h3>
       </div>
-      <SearchPoke />
+      <SearchPoke
+        handleSelect={e => {
+          selectPokemon(e.value);
+        }}
+      />
       {pokeControl}
       <div className="allPokeCards">{showPokemons}</div>
       {pokeControl}
@@ -115,7 +119,7 @@ const Pokemon = () => {
         <React.Fragment>
           <Backdrop handleClick={() => toggleModal()} />
           <PokeInfo
-            handleClick={() => toggleModal()}
+            handleClick={e => toggleModal(e)}
             pokemon={selectedPokemon}
           />
         </React.Fragment>
