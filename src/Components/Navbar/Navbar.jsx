@@ -12,11 +12,6 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink className="" to="/star-wars">
-            Star Wars
-          </NavLink>
-        </li>
-        <li>
           <NavLink className="" to="/pokemon">
             Pokemon
           </NavLink>
@@ -24,6 +19,11 @@ const Navbar = () => {
         <li>
           <NavLink className="" to="/nasa">
             Nasa
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="" to="/star-wars">
+            Star Wars
           </NavLink>
         </li>
       </ul>

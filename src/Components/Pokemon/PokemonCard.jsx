@@ -55,11 +55,11 @@ const PokeCard = props => {
         }
       />
       {toManyRequests ? (
-        <h6 className="mx-auto">
+        <p className="mx-auto">
           <span className="badge badge-danger mt-2">
             To Many Requests. Retry later !
           </span>
-        </h6>
+        </p>
       ) : null}
     </Card>
   );
