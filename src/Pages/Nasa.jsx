@@ -93,11 +93,11 @@ const Nasa = () => {
         </div>
         <div className="nasaContentDescription">
           <p>
-            <b>Title :</b>
+            <b>Title: </b>
             {pictureInfo.title}
           </p>
           <p>
-            <b>Description :</b>
+            <b>Description: </b>
             {pictureInfo.explanation}
           </p>
         </div>

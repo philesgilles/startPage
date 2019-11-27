@@ -143,7 +143,7 @@ const PokeInfo = props => {
                 <div className="pokeStatsText">
                   {stat.stat.name} : {stat.base_stat}
                 </div>
-                <ProgressBar percentage={stat.base_stat} />
+                <ProgressBar percentage={stat.base_stat / 1.8} />
               </React.Fragment>
             );
           })}
