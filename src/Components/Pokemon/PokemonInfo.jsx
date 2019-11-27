@@ -27,8 +27,6 @@ const PokeInfo = props => {
   const { pokemon } = props;
   const [species, setSpecies] = useState({});
   const [description, setDescription] = useState("");
-
-  console.log(props);
   //Pokemon Abilities
   const abilities = pokemon.abilities
     .map(ability => {
@@ -47,28 +45,27 @@ const PokeInfo = props => {
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}/`)
       .then(response => {
         if (!response.ok) {
-          throw new Error("Failed to fetch description");
           return {};
         }
         return response.json();
       })
       .then(speciesData => {
         setSpecies(speciesData);
-        console.log(speciesData);
         // set description and keep only english text
         speciesData.flavor_text_entries.some(flavor => {
           if (flavor.language.name === "en") {
             setDescription(flavor.flavor_text);
             return "";
           }
+          return "";
         });
       });
   };
 
   useEffect(() => {
     fetchSpecies();
+    // eslint-disable-next-line
   }, []);
-  console.log(species);
 
   return (
     <div className="pokeInfo">

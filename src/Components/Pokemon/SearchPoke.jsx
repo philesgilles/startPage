@@ -5,7 +5,6 @@ import "./SearchPoke.css";
 
 const SearchBar = props => {
   const [allPoke, setAllPoke] = useState([]);
-  const [isLoading, setIsLoading] = useState();
 
   const fetchAllPokemons = url => {
     fetch(url)
@@ -19,18 +18,19 @@ const SearchBar = props => {
         let pokemons = allPoke;
         pokemonsData.results.map(pokemon => {
           pokemons.push({ value: pokemon.url, label: pokemon.name });
+          return "";
         });
         pokemons = _.orderBy(pokemons, ["label"], ["asc"]);
         setAllPoke(pokemons);
       })
       .catch(err => {
         console.log(err);
-        setIsLoading(false);
       });
   };
 
   useEffect(() => {
     fetchAllPokemons("https://pokeapi.co/api/v2/pokemon/?limit=964");
+    // eslint-disable-next-line
   }, []);
   return (
     <div className="searchPoke">
