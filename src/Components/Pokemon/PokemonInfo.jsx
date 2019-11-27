@@ -141,12 +141,19 @@ const PokeInfo = props => {
                   <b>Gender Ratio :</b>
                 </p>
                 <div>
-                  <p style={{ textAlign: "center" }}>
-                    {species.gender_rate * 12.5} % females
-                  </p>
-                  <div style={{ position: "relative", top: "-20px" }}>
+                  <div style={{ marginTop: "10px" }}>
                     <ProgressBar percentage={species.gender_rate * 12.5} />
                   </div>
+                  <p
+                    className="onTop"
+                    style={{
+                      textAlign: "center",
+                      position: "relative",
+                      top: "-31px"
+                    }}
+                  >
+                    {species.gender_rate * 12.5} % females
+                  </p>
                 </div>
               </div>
               <div className="pokeProfileText">
