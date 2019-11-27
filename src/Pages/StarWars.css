@@ -2,3 +2,16 @@
   height: 120px;
   margin: 10px auto;
 }
+
+.swHeader {
+  background: #0c0321;
+  border: #1c2321 1px solid;
+  color: #ecfe12;
+  padding: 5px;
+  margin: 10px 0 20px;
+}
+
+.swContent {
+  border: #1c2321 1px solid;
+  padding: 20px;
+}

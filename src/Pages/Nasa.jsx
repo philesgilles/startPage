@@ -70,6 +70,11 @@ const Nasa = () => {
         <div className="flex">
           <p>Select a date to get the picture :</p>
           <DatePicker
+            maxDate={new Date()}
+            minDate={new Date("1996-06-01")}
+            showDisabledMonthNavigation
+            yearDropdownItemNumber={23}
+            showYearDropdown
             style={{ width: "30px" }}
             selected={selectedDate}
             onChange={date => setSelectedDate(date)}
