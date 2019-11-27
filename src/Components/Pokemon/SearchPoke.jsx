@@ -36,7 +36,9 @@ const SearchBar = props => {
     <div className="searchPoke">
       <Select
         options={allPoke}
-        placeholder={allPoke.length > 0 ? "Search" : "Loading Pokemons"}
+        placeholder={
+          allPoke.length > 0 ? "Search a Pokemon" : "Loading Pokemons"
+        }
         onChange={e => props.handleSelect(e)}
       />
     </div>

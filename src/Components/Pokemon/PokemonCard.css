@@ -5,3 +5,9 @@
   margin: 20px 0.8em 0;
   cursor: pointer;
 }
+
+@media (max-width: 550px) {
+  .pokeCard {
+    width: 100%;
+  }
+}

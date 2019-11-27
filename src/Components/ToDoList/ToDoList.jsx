@@ -56,7 +56,10 @@ const ToDo = () => {
   };
   let list = (
     <tr>
-      <td colSpan="4">No tasks yet</td>
+      <td>No tasks yet</td>
+      <td>No tasks yet</td>
+      <td>No tasks yet</td>
+      <td>No tasks yet</td>
     </tr>
   );
   if (tasks.length > 0) {

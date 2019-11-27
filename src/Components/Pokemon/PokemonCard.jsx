@@ -5,6 +5,7 @@ import Loading from "../Loading/Loading";
 
 const Sprite = styled.img`
   width: 70%;
+  max-width: 130px;
   display: none;
   margin: 10px auto;
 `;

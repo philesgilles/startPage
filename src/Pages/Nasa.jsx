@@ -77,7 +77,7 @@ const Nasa = () => {
         </div>
       </div>
       <div className="nasaContent">
-        <div>
+        <div className="nasaPicture">
           {imageLoading ? <Loading /> : null}
           <Sprite
             className=""
