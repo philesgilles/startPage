@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./PokemonInfo.css";
 import ProgressBar from "../Main/ProgressBar";
 
@@ -25,8 +25,50 @@ const TYPE_COLORS = {
 
 const PokeInfo = props => {
   const { pokemon } = props;
+  const [species, setSpecies] = useState({});
+  const [description, setDescription] = useState("");
 
+  console.log(props);
+  //Pokemon Abilities
+  const abilities = pokemon.abilities
+    .map(ability => {
+      return ability.ability.name
+        .toLowerCase()
+        .split("-")
+        .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(" ");
+    })
+    .join(", ");
+
+  //Get Pokemon Image
   const pokemonImg = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokemon.id}.png?raw=true`;
+
+  const fetchSpecies = () => {
+    fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}/`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch description");
+        }
+        return response.json();
+      })
+      .then(speciesData => {
+        setSpecies(speciesData);
+        console.log(speciesData);
+        // set description and keep only english text
+        speciesData.flavor_text_entries.some(flavor => {
+          if (flavor.language.name === "en") {
+            setDescription(flavor.flavor_text);
+            return "";
+          }
+        });
+      });
+  };
+
+  useEffect(() => {
+    fetchSpecies();
+  }, []);
+  console.log(species);
+
   return (
     <div className="pokeInfo">
       <div className="pokeInfoHeader flex">
@@ -36,7 +78,6 @@ const PokeInfo = props => {
         <div>
           {pokemon.types.map(type => {
             const type2 = type.type.name;
-            console.log(type);
             return (
               <span
                 key={type2}
@@ -50,25 +91,112 @@ const PokeInfo = props => {
               </span>
             );
           })}
+          <img
+            onClick={props.handleClick}
+            className="pokeImageWrapperImg"
+            src={process.env.PUBLIC_URL + "/img/closeIcon.png"}
+            alt="close"
+          />
         </div>
       </div>
-      <div className="pokeInfoContent flex">
+      <div className="pokeInfoContent">
         <div className="pokeImageWrapper">
           <img src={pokemonImg} alt="" />
         </div>
         <div className="pokeStatsWrapper">
           {pokemon.stats.map(stat => {
-            console.log(stat);
             return (
-              <div className="flex">
-                <div>
+              <React.Fragment key={stat.stat.name}>
+                <div className="pokeStatsText">
                   {stat.stat.name} : {stat.base_stat}
                 </div>
                 <ProgressBar percentage={stat.base_stat} />
-              </div>
+              </React.Fragment>
             );
           })}
         </div>
+        {Object.keys(species).length > 0 ? (
+          <React.Fragment>
+            <div className="pokeStatDescription">
+              <p>{description}</p>
+              <hr />
+            </div>
+            <div className="pokeProfile">
+              <h3>Profile</h3>
+              <div className="pokeProfileText">
+                <p className="textRight">
+                  <b>Height :</b>
+                </p>
+                <p>{pokemon.height}0 cm</p>
+                <p className="textRight">
+                  <b>Weight :</b>
+                </p>
+                <p>{pokemon.weight / 10} kg</p>
+                <p className="textRight">
+                  <b>Catch rate :</b>
+                </p>
+                <p>{Math.round((100 / 255) * species.capture_rate)} %</p>
+                <p className="textRight">
+                  <b>Gender Ratio :</b>
+                </p>
+                <div>
+                  <p style={{ textAlign: "center" }}>
+                    {species.gender_rate * 12.5} % females
+                  </p>
+                  <div style={{ position: "relative", top: "-20px" }}>
+                    <ProgressBar percentage={species.gender_rate * 12.5} />
+                  </div>
+                </div>
+              </div>
+              <div className="pokeProfileText">
+                <p className="textRight">
+                  <b>Eggs groups :</b>
+                </p>
+                <p>
+                  {species.egg_groups
+                    .map(group => {
+                      return group.name
+                        .toLowerCase()
+                        .split(" ")
+                        .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+                        .join(" ");
+                    })
+                    .join(", ")}
+                </p>
+                <p className="textRight">
+                  <b>Hatch steps :</b>
+                </p>
+                <p>{255 * (species["hatch_counter"] + 1)}</p>
+                <p className="textRight">
+                  <b>Abilities :</b>
+                </p>
+                <p>{abilities}</p>
+                <p className="textRight">
+                  <b>EVs :</b>
+                </p>
+                <p>
+                  {pokemon.stats
+                    .filter(stat => {
+                      if (stat.effort > 0) {
+                        return true;
+                      }
+                      return false;
+                    })
+                    .map(stat => {
+                      return `${stat.effort} ${stat.stat.name
+                        .toLowerCase()
+                        .split("-")
+                        .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+                        .join(" ")}`;
+                    })
+                    .join(", ")}
+                </p>
+              </div>
+            </div>
+          </React.Fragment>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

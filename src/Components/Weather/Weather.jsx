@@ -32,7 +32,7 @@ const Weather = () => {
   let printWeather = <Loading />;
   if (!isLoading && Object.keys(weather).length > 0) {
     console.log(weather);
-    console.log(weather.RealFeelTemperature);
+    console.log(weather.RelativeHumidity);
     printWeather = (
       <React.Fragment>
         <h4>Weather today in Brussels is {weather.WeatherText}</h4>
@@ -50,7 +50,7 @@ const Weather = () => {
             <p>Pressure : {weather.Pressure.Metric.Value} mb</p>
           </div>
           <div>
-            <p>Humidity : {Weather.RelativeHumidity} %</p>
+            <p>Humidity : {weather.RelativeHumidity} %</p>
             <p>Visibility : {weather.Visibility.Metric.Value} km</p>
             <p>Uv Index : {weather.UVIndexText}</p>
           </div>

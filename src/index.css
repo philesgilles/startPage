@@ -5,6 +5,12 @@
   padding: 0;
 }
 
+hr {
+  margin-top: 25px;
+  border-top: #7d98a180 1px solid;
+  border-bottom: none;
+}
+
 /* ! COLORS  */
 .rien {
   one: #1c2321;

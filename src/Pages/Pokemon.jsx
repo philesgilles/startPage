@@ -48,7 +48,6 @@ const Pokemon = () => {
       .then(pokemonData => {
         setSelectedPokemon(pokemonData);
         toggleModal();
-        console.log(pokemonData);
       })
       .catch(err => {
         console.log(err);

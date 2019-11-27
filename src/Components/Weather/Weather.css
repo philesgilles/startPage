@@ -9,7 +9,7 @@
 
 .weatherWidget h4 {
   padding: 0;
-  margin: 0;
+  margin: 5px 5px 10px;
 }
 
 .weatherWidgetInfo {
@@ -17,5 +17,8 @@
 }
 
 .weatherWidgetInfo > div {
-  margin-left: 20px;
+  margin: 0 10px 5px 20px;
+}
+.weatherWidgetInfo > div > p {
+  margin-bottom: 6px;
 }
