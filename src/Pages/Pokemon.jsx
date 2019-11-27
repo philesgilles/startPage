@@ -3,6 +3,7 @@ import Loading from "../Components/Loading/Loading";
 import PokeCard from "../Components/Pokemon/PokemonCard";
 import PokeInfo from "../Components/Pokemon/PokemonInfo";
 import Backdrop from "../Components/Main/Backdrop";
+import SearchPoke from "../Components/Pokemon/SearchPoke";
 //import PokeList from "../Components/Pokemon/PokemonList";
 import "./Pokemon.css";
 
@@ -106,6 +107,7 @@ const Pokemon = () => {
       <div className="pokeHeader">
         <h3>Pokedex</h3>
       </div>
+      <SearchPoke />
       {pokeControl}
       <div className="allPokeCards">{showPokemons}</div>
       {pokeControl}

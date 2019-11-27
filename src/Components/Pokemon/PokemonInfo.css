@@ -30,6 +30,8 @@
 .pokeInfoHeader img {
   height: 28px;
   cursor: pointer;
+  position: relative;
+  top: 3px;
 }
 
 .badge {
@@ -40,7 +42,7 @@
   font-weight: bold;
   margin: 0 10px 0 0;
   position: relative;
-  top: -8px;
+  top: -6px;
 }
 
 .pokeInfoContent {
