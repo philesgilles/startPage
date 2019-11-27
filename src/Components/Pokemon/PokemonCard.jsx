@@ -40,7 +40,7 @@ const PokeCard = props => {
       </div>
       {imageLoading ? <Loading /> : null}
       <Sprite
-        className="card-img-top rounded mx-auto mt-2"
+        className=""
         src={imageUrl}
         onLoad={() => setImageLoading(false)}
         onError={() => {

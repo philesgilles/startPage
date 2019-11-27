@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./PokemonInfo.css";
 import ProgressBar from "../Main/ProgressBar";
+import styled from "styled-components";
+import Loading from "../Loading/Loading";
+
+const Sprite = styled.img`
+  height: 130px;
+  display: none;
+  margin: 10px auto;
+`;
 
 const TYPE_COLORS = {
   bug: "B1C12E",
@@ -27,6 +35,8 @@ const PokeInfo = props => {
   const { pokemon } = props;
   const [species, setSpecies] = useState({});
   const [description, setDescription] = useState("");
+  const [imageLoading, setImageLoading] = useState(true);
+  const [toManyRequests, setToManyRequests] = useState(false);
   //Pokemon Abilities
   const abilities = pokemon.abilities
     .map(ability => {
@@ -52,13 +62,15 @@ const PokeInfo = props => {
       .then(speciesData => {
         setSpecies(speciesData);
         // set description and keep only english text
-        speciesData.flavor_text_entries.some(flavor => {
-          if (flavor.language.name === "en") {
-            setDescription(flavor.flavor_text);
+        if (speciesData.flavor_text_entries) {
+          speciesData.flavor_text_entries.some(flavor => {
+            if (flavor.language.name === "en") {
+              setDescription(flavor.flavor_text);
+              return "";
+            }
             return "";
-          }
-          return "";
-        });
+          });
+        }
       });
   };
 
@@ -99,7 +111,30 @@ const PokeInfo = props => {
       </div>
       <div className="pokeInfoContent">
         <div className="pokeImageWrapper">
-          <img src={pokemonImg} alt="" />
+          {imageLoading ? <Loading /> : null}
+          <Sprite
+            className=""
+            src={pokemonImg}
+            onLoad={() => setImageLoading(false)}
+            onError={() => {
+              setToManyRequests(true);
+              setImageLoading(false);
+            }}
+            style={
+              toManyRequests
+                ? { display: "none" }
+                : imageLoading
+                ? null
+                : { display: "block" }
+            }
+          />
+          {toManyRequests ? (
+            <p className="mx-auto">
+              <span className="badge badge-danger mt-2">
+                To Many Requests. Retry later !
+              </span>
+            </p>
+          ) : null}
         </div>
         <div className="pokeStatsWrapper">
           {pokemon.stats.map(stat => {
