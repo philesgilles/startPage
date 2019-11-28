@@ -1,0 +1,48 @@
+.swPlanet {
+  position: relative;
+  background: #eef1ef80;
+  height: 400px;
+  width: 400px;
+  border: #fff862 2px solid;
+}
+
+.planetSelect {
+  margin: auto;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.planetSelect div {
+  margin: 3px;
+  border: #5e6572 2px solid;
+  background: rgb(194, 157, 101);
+  padding: 10px;
+  height: auto;
+  font-size: 20px;
+  font-weight: bold;
+  height: 26px;
+  text-transform: uppercase;
+}
+
+.planetSelect div {
+  box-shadow: 0 0 5px #515255;
+}
+
+.planetSelect div:nth-child(odd) {
+  cursor: pointer;
+}
+.planetSelect div:nth-child(even) {
+  width: 190px;
+  text-align: center;
+}
+
+.planetSelect div:active {
+  position: relative;
+  top: 2px;
+  border-bottom: #5e6572 1px solid;
+  box-shadow: 0 0 2px #515255;
+}
+
+.swPlanetInfo {
+  width: 100%;
+}

@@ -12,13 +12,13 @@ const Sprite = styled.img`
 `;
 
 const Nasa = () => {
-  const today = new Date();
   // Declare Hooks States
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [pictureInfo, setPictureInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [imageLoading, setImageLoading] = useState(false);
   const getPicture = date => {
+    setIsLoading(true);
     const url = `https://api.nasa.gov/planetary/apod?date=${date}&api_key=DEMO_KEY`;
     fetch(url)
       .then(response => {
@@ -30,6 +30,7 @@ const Nasa = () => {
       .then(pictureData => {
         console.log(pictureData);
         setPictureInfo(pictureData);
+        setIsLoading(false);
       })
       .catch(err => {
         console.log(err);
@@ -81,27 +82,31 @@ const Nasa = () => {
           />{" "}
         </div>
       </div>
-      <div className="nasaContent">
-        <div className="nasaPicture">
-          {imageLoading ? <Loading /> : null}
-          <Sprite
-            className=""
-            src={pictureUrl}
-            onLoad={() => setImageLoading(false)}
-            style={imageLoading ? null : { display: "block" }}
-          />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="nasaContent">
+          <div className="nasaPicture">
+            {imageLoading ? <Loading /> : null}
+            <Sprite
+              className=""
+              src={pictureUrl}
+              onLoad={() => setImageLoading(false)}
+              style={imageLoading ? null : { display: "block" }}
+            />
+          </div>
+          <div className="nasaContentDescription">
+            <p>
+              <b>Title: </b>
+              {pictureInfo.title}
+            </p>
+            <p>
+              <b>Description: </b>
+              {pictureInfo.explanation}
+            </p>
+          </div>
         </div>
-        <div className="nasaContentDescription">
-          <p>
-            <b>Title: </b>
-            {pictureInfo.title}
-          </p>
-          <p>
-            <b>Description: </b>
-            {pictureInfo.explanation}
-          </p>
-        </div>
-      </div>
+      )}
     </React.Fragment>
   );
 };

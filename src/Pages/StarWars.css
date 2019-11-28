@@ -2,7 +2,6 @@
   height: 120px;
   margin: 10px auto;
 }
-
 .swHeader {
   background: #0c0321;
   border: #fff862 2px solid;
@@ -13,5 +12,26 @@
 
 .swContent {
   border: #1c2321 1px solid;
-  padding: 20px;
+  padding: 30px;
+  background: black;
+  justify-content: center;
+  border: #fff862 2px solid;
+  justify-content: center;
+}
+
+canvas #canvas {
+  display: hidden !important;
+  z-i-webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  background: #020120;
+}
+
+.swContent_in {
+  position: relative;
+  background: #eef1ef60;
+  height: 400px;
+  width: 400px;
 }

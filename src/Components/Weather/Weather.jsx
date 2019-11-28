@@ -9,10 +9,10 @@ const Weather = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(
-      "http://dataservice.accuweather.com/currentconditions/v1/27581?apikey=Unl7jIAxzReRkayK8SAxGJp9P7IjjXSA&details=true"
-    )
-      // fetch("/")
+    // fetch(
+    //   "http://dataservice.accuweather.com/currentconditions/v1/27581?apikey=Unl7jIAxzReRkayK8SAxGJp9P7IjjXSA&details=true"
+    // )
+    fetch("/")
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to fetch.");
