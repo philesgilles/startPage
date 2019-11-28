@@ -3,15 +3,14 @@ import "./StarWars.css";
 import Planet from "../Components/StarWars/Planet";
 const StarWars = () => {
   //Start stars Canvas onLoad
-  useEffect(() => {
-    console.log("start canvas");
+  var startCanvas = () => {
     var canvas = document.getElementById("space"),
       ctx = canvas.getContext("2d"),
       w = (canvas.width = document.getElementById("starWay").offsetWidth - 4),
       h = (canvas.height = document.getElementById("starWay").offsetHeight + 3),
       // w = (canvas.width = 600),
       // h = (canvas.height = 200),
-      hue = 217,
+      hue = 45,
       stars = [],
       count = 0,
       maxStars = 1400;
@@ -32,8 +31,8 @@ const StarWars = () => {
     var half = canvas2.width / 2,
       gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half);
     gradient2.addColorStop(0.025, "#fff");
-    gradient2.addColorStop(0.1, "hsl(" + hue + ", 61%, 33%)");
-    gradient2.addColorStop(0.25, "hsl(" + hue + ", 64%, 6%)");
+    gradient2.addColorStop(0.1, "hsl(" + hue + ", 10%, 33%)");
+    gradient2.addColorStop(0.25, "hsl(" + hue + ", 3%, 6%)");
     gradient2.addColorStop(1, "transparent");
 
     ctx2.fillStyle = gradient2;
@@ -119,6 +118,10 @@ const StarWars = () => {
     }
 
     animation();
+  };
+  useEffect(() => {
+    console.log("start canvas");
+    startCanvas();
   }, []);
   return (
     <React.Fragment>

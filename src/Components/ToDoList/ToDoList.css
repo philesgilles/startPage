@@ -149,6 +149,7 @@
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
   margin-bottom: 30px;
+  border: #c3ccd8 1px solid;
 }
 .addTaskForm input[type="text"]:focus,
 .addTaskForm input[type="date"]:focus,

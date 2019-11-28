@@ -3,7 +3,29 @@ import React, { useState, useEffect } from "react";
 import "./ToDoList.css";
 
 const ToDo = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([
+    {
+      task: "Add remove toDo possibility",
+      importance: "1",
+      done: false,
+      dueDate: "2019-12-12",
+      id: 0
+    },
+    {
+      task: "Add localStorage todozz",
+      importance: "2",
+      done: false,
+      dueDate: "2019-12-12",
+      id: 1
+    },
+    {
+      task: "Check the beauty of the home page",
+      importance: "0",
+      done: false,
+      dueDate: "2019-12-12",
+      id: 2
+    }
+  ]);
   //Set new tasks states
   const [newTask, setNewTask] = useState({
     task: "",
@@ -60,6 +82,7 @@ const ToDo = () => {
       <td>No tasks yet</td>
       <td>No tasks yet</td>
       <td>No tasks yet</td>
+      <td>No tasks yet</td>
     </tr>
   );
   if (tasks.length > 0) {
@@ -83,6 +106,7 @@ const ToDo = () => {
             )}
             {task.importance === "2" && <p style={{ color: "red" }}>High</p>}
           </td>
+          <td>DELETE</td>
         </tr>
       );
     });
@@ -99,6 +123,7 @@ const ToDo = () => {
               <th>Due date</th>
               <th className="taskTable">Task</th>
               <th>Importance</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>{list}</tbody>

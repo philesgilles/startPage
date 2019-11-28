@@ -42,6 +42,7 @@ const Planet = props => {
       .then(resData => {
         setPlanets(resData.data.allPlanets);
         setIsLoading(false);
+        console.log(resData.data.allPlanets);
         let random = Math.floor(Math.random() * planets.length);
         setSelectedPlanet(random);
       })
@@ -92,7 +93,15 @@ const Planet = props => {
         <div className="swPlanetInfo">
           <div>
             <p htmlFor="">Planet diameter:</p>
-            <input type="text" value={planet.diameter + " km\xB2"} disabled />
+            <input
+              type="text"
+              value={
+                planet.diameter !== null
+                  ? planet.diameter + " km\xB2"
+                  : "unknown"
+              }
+              disabled
+            />
           </div>
           <div>
             <p htmlFor="">Population:</p>
@@ -100,23 +109,36 @@ const Planet = props => {
           </div>
           <div>
             <p htmlFor="">Surface water:</p>
-            <input type="text" value={planet.surfaceWater + " %"} disabled />
+            <input
+              type="text"
+              value={
+                planet.surfaceWater !== null
+                  ? planet.surfaceWater + " %"
+                  : "unknown"
+              }
+              disabled
+            />
           </div>
           <div>
             <p htmlFor="">Terrain</p>
             <input
               type="text"
-              value={planet.terrain
-                .map(e => {
-                  return e;
-                })
-                .join(", ")}
+              value={
+                planet.terrain !== null
+                  ? planet.terrain
+                      .map(e => {
+                        return e;
+                      })
+                      .join(", ")
+                  : "unknown"
+              }
               disabled
             />
           </div>
           <div>
             <p htmlFor="">Famous residents</p>
             <textarea
+              rows="3"
               type="text"
               value={
                 planet.residents.length > 0
