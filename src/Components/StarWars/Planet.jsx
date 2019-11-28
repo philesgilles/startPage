@@ -83,31 +83,52 @@ const Planet = props => {
     console.log("not null");
     planetInfo = (
       <React.Fragment>
+        <h1 className="swHead">Select a planet</h1>
         <div className="planetSelect flex">
           <div onClick={prevPlanet}>{"<<"}</div>
           <div>{planet.name}</div>
           <div onClick={nextPlanet}>{">>"}</div>
         </div>
-        <div className="swPlanetInfo flex">
+        <div className="swPlanetInfo">
           <div>
-            <label htmlFor=""></label>
-            <input type="text" />
+            <p htmlFor="">Planet diameter:</p>
+            <input type="text" value={planet.diameter + " km\xB2"} disabled />
           </div>
           <div>
-            <label htmlFor=""></label>
-            <input type="text" />
+            <p htmlFor="">Population:</p>
+            <input type="text" value={planet.population} disabled />
           </div>
           <div>
-            <label htmlFor=""></label>
-            <input type="text" />
+            <p htmlFor="">Surface water:</p>
+            <input type="text" value={planet.surfaceWater + " %"} disabled />
           </div>
           <div>
-            <label htmlFor=""></label>
-            <input type="text" />
+            <p htmlFor="">Terrain</p>
+            <input
+              type="text"
+              value={planet.terrain
+                .map(e => {
+                  return e;
+                })
+                .join(", ")}
+              disabled
+            />
           </div>
           <div>
-            <label htmlFor=""></label>
-            <input type="text" />
+            <p htmlFor="">Famous residents</p>
+            <textarea
+              type="text"
+              value={
+                planet.residents.length > 0
+                  ? planet.residents
+                      .map(e => {
+                        return e.name;
+                      })
+                      .join(", ")
+                  : "none"
+              }
+              disabled
+            />
           </div>
         </div>
       </React.Fragment>

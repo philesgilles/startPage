@@ -1,21 +1,25 @@
 .swPlanet {
-  position: relative;
+  width: 100%;
+  max-width: 450px;
   background: #eef1ef80;
-  height: 400px;
-  width: 400px;
   border: #fff862 2px solid;
+}
+
+.swHead {
+  text-align: center;
+  margin-top: 10px;
 }
 
 .planetSelect {
   margin: auto;
   justify-content: center;
-  margin: 20px 0;
+  padding: 10px 0;
 }
 
 .planetSelect div {
   margin: 3px;
   border: #5e6572 2px solid;
-  background: rgb(194, 157, 101);
+  background: #fff862;
   padding: 10px;
   height: auto;
   font-size: 20px;
@@ -44,5 +48,26 @@
 }
 
 .swPlanetInfo {
-  width: 100%;
+  flex-direction: row;
+  padding: 0 20px 20px;
+}
+
+.swPlanetInfo p {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.swPlanetInfo input,
+.swPlanetInfo textarea {
+  width: calc(100% - 10px);
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #eef1ef;
+  background: black;
+  border: #fff862 2px solid;
+  padding: 4px;
+  border-radius: 10px;
 }
