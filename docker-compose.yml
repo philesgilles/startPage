@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   start_page:
-    container_name: sample
+    container_name: start_page
     build:
       context: .
       dockerfile: Dockerfile
