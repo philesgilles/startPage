@@ -19,8 +19,10 @@ const StarWars = () => {
       // this kind of function you are looking for
       let dataUrl = canvas.toDataURL();
 
-      document.getElementById("starWay").style.background =
-        "url(" + dataUrl + ")";
+      if (document.getElementById("starWay")) {
+        document.getElementById("starWay").style.background =
+          "url(" + dataUrl + ")";
+      }
     }
     // Thanks @jackrugile for the performance tip! https://codepen.io/jackrugile/pen/BjBGoM
     // Cache gradient

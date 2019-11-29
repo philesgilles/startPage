@@ -106,7 +106,9 @@ const ToDo = () => {
             )}
             {task.importance === "2" && <p style={{ color: "red" }}>High</p>}
           </td>
-          <td>DELETE</td>
+          <td>
+            <i class="fa fa-lg fa-trash pointer" aria-hidden="true"></i>
+          </td>
         </tr>
       );
     });
