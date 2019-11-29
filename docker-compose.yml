@@ -1,7 +1,7 @@
 version: "3.3"
 
 services:
-  sample:
+  start_page:
     container_name: sample
     build:
       context: .
