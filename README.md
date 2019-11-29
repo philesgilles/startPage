@@ -20,7 +20,7 @@ I have chosen a flat design with distinctive theme on every page.
 
 ### Home Page
 
-Weahter widget API showing the weather in brussels.
+Weather widget API showing the weather in brussels.
 To Do widget to add/edit/remove to do's.
 
 To-Do list
@@ -31,7 +31,7 @@ Pokedex retriving the information from https://pokeapi.co
 Clicking on a Pokemon will show a modal with all informaiton.
 Stats level bar change progressively color depending on level (green low => red high).
 
-### Nase API
+### Nasa API
 
 This page retrives the *Picture of the day* from Nasa API.
 
