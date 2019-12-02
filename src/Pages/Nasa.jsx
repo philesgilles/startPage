@@ -28,7 +28,6 @@ const Nasa = () => {
         return response.json();
       })
       .then(pictureData => {
-        console.log(pictureData);
         setPictureInfo(pictureData);
         setIsLoading(false);
       })

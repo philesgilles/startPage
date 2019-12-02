@@ -31,8 +31,6 @@ const Weather = () => {
 
   let printWeather = <Loading />;
   if (!isLoading && Object.keys(weather).length > 0) {
-    console.log(weather);
-    console.log(weather.RelativeHumidity);
     printWeather = (
       <React.Fragment>
         <h4>Weather today in Brussels is {weather.WeatherText}</h4>

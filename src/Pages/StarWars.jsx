@@ -122,7 +122,7 @@ const StarWars = () => {
     animation();
   };
   useEffect(() => {
-    console.log("start canvas");
+    // console.log("start canvas");
     startCanvas();
   }, []);
   return (

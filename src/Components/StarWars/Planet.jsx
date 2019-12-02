@@ -42,7 +42,6 @@ const Planet = props => {
       .then(resData => {
         setPlanets(resData.data.allPlanets);
         setIsLoading(false);
-        console.log(resData.data.allPlanets);
         let random = Math.floor(Math.random() * planets.length);
         setSelectedPlanet(random);
       })
@@ -76,12 +75,10 @@ const Planet = props => {
   }, []);
 
   let planet = planets[selectedPlanet];
-  console.log(planet);
 
   let planetInfo = <Loading />;
 
   if (selectedPlanet !== null) {
-    console.log("not null");
     planetInfo = (
       <React.Fragment>
         <h1 className="swHead">Select a planet</h1>
