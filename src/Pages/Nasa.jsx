@@ -29,6 +29,7 @@ const Nasa = () => {
       })
       .then(pictureData => {
         setPictureInfo(pictureData);
+        console.log(pictureData);
         setIsLoading(false);
       })
       .catch(err => {
@@ -54,6 +55,26 @@ const Nasa = () => {
     getPicture(date);
   }, [selectedDate]);
   const pictureUrl = pictureInfo.url;
+
+  let NasaMedia = (
+    <Sprite
+      className=""
+      src={pictureUrl}
+      onLoad={() => setImageLoading(false)}
+      style={imageLoading ? null : { display: "block" }}
+    />
+  );
+  if (pictureInfo.media_type === "video") {
+    NasaMedia = (
+      <iframe
+        title="video"
+        width="100%"
+        height="350"
+        onLoad={() => setImageLoading(false)}
+        src={`${pictureInfo.url}/?autoplay=1`}
+      ></iframe>
+    );
+  }
   return (
     <React.Fragment>
       <div className="flex">
@@ -87,12 +108,7 @@ const Nasa = () => {
         <div className="nasaContent">
           <div className="nasaPicture">
             {imageLoading ? <Loading /> : null}
-            <Sprite
-              className=""
-              src={pictureUrl}
-              onLoad={() => setImageLoading(false)}
-              style={imageLoading ? null : { display: "block" }}
-            />
+            {NasaMedia}
           </div>
           <div className="nasaContentDescription">
             <p>
